@@ -37,6 +37,7 @@
     "@typescript-eslint/camelcase": "off",
     "no-param-reassign": "off",
     "class-methods-use-this": "off",
+    "no-unused-vars": "off",
     "import/extensions": [
       "error",
       "ignorePackages",

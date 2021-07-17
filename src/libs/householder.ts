@@ -1,14 +1,15 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-return-assign */
-/* eslint prefer-const: 0 */
-
-import IHouseholderRepository, { IResponseHouseholder } from '@repositories/IHouseholderRepository';
+import IHouseholderRepository, {
+  IResponseHouseholder,
+} from '@repositories/IHouseholderRepository';
 import eye from '@utils/eye';
-import innerProduct from '@utils/innerProduct';
 import matrixByScalar from '@utils/matrixByScalar';
+import multiply from '@utils/multiply';
 import norm from '@utils/norm';
+import transpose from '@utils/transpose';
 import unitVector from '@utils/unitVector';
+
+// https://www.cs.cornell.edu/~bindel/class/cs6210-f12/notes/lec16.pdf
+// https://stackoverflow.com/questions/509211/understanding-slice-notation
 
 class Householder implements IHouseholderRepository {
   public execute(matrix: number[][]): IResponseHouseholder {
@@ -23,43 +24,25 @@ class Householder implements IHouseholderRepository {
     const n = matrix[0].length;
 
     const Q = eye(m);
-    let R = matrix;
+    const R = matrix;
 
-    let normx: number;
-    let s: number;
-    let u1: number;
-    let w: Array<number>;
-    let tau: number;
-
-    let rSliced: Array<Array<number>> = [[]];
-    let rResponse: Array<Array<number>> = [[]];
-
-    let tauQ: Array<number> = [];
-    let dotW: Array<number> = [];
-
-    [...new Array(n - 1)].forEach((_, index: number) => {
-      // normx = norm(R(j:end,j)); -> Erro detectado
-      normx = norm(R[index]);
-      s = -1 * Math.sign(R[index][index]);
-      u1 = R[index][index] - s * normx;
-
-      // w = R(j:end,j)/u1; -> Erro detectado
-      w = unitVector(R[index], u1);
+    const response = Array.from({ length: n }, (_, nIndex) => {
+      const normx = norm(R[nIndex]);
+      const s = -Math.sign(R[nIndex][nIndex]);
+      const u1 = R[nIndex][nIndex] - s * normx;
+      const w = unitVector(R[nIndex], u1);
       w[0] = 1;
-      tau = (-s * u1) / normx;
+      const tau = (-s * u1) / normx;
 
-      rSliced = R.slice(index, R[0].length);
-
-      rResponse = rSliced.map(rColumn => {
-        tauQ = matrixByScalar(tau, w);
-        dotW = matrixByScalar(innerProduct(w, w), rColumn);
-
-        return rColumn.map((elem, rColumnIndex) => elem - tauQ[rColumnIndex] * dotW[rColumnIndex]);
-      });
-      Array.from(Array(R[0].length).keys())
-        .slice(index)
-        .map((_, rIndex) => (R[rIndex] = rResponse[rIndex]));
+      return Array.from(
+        { length: m },
+        (_, mIndex) =>
+          R[nIndex][mIndex] -
+          matrixByScalar(tau, w)[mIndex] * multiply([w], R)[0][mIndex],
+      );
     });
+
+    console.log(response);
 
     return { R, Q };
   }

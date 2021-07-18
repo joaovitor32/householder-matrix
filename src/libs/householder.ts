@@ -28,17 +28,25 @@ class Householder implements IHouseholderRepository {
 
     const response = Array.from({ length: n }, (_, nIndex) => {
       const normx = norm(R[nIndex]);
-      const s = -Math.sign(R[nIndex][nIndex]);
-      const u1 = R[nIndex][nIndex] - s * normx;
+      const s = R[nIndex].map((elem: number) => -Math.sign(elem));
+      const u1 = R[nIndex].map(
+        (elem: number, index: number) => elem - s[index] * normx,
+      );
       const w = unitVector(R[nIndex], u1);
-      w[0] = 1;
-      const tau = (-s * u1) / normx;
 
+      w[0] = 1;
+      const tau = u1.map(
+        (elem: number, index: number) => (-1 * s[index] * elem) / normx,
+      );
+
+      // Da seguint maneira os valores de R não estão sendo reatribuidos
       return Array.from(
         { length: m },
         (_, mIndex) =>
           R[nIndex][mIndex] -
-          matrixByScalar(tau, w)[mIndex] * multiply([w], R)[0][mIndex],
+          multiply(multiply([tau], [w]), multiply(transpose([w]), R))[0][
+            mIndex
+          ],
       );
     });
 

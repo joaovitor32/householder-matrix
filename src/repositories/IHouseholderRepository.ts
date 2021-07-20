@@ -1,8 +1,3 @@
-export interface IResponseHouseholder {
-  R: number[][];
-  Q: number[][];
-}
-
 export default interface IHouseholderRepository {
-  execute(matrix: number[][]): IResponseHouseholder;
+  householder_matrix(index: number, matrix: number[]): number[][];
 }

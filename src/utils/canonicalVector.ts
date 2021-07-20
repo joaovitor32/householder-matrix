@@ -3,7 +3,9 @@ const canonicalVector = (position: number, size: number): Array<number> => {
     throw new Error('Incompatible position and size');
   }
 
-  const canVector = [...new Array(size)].map((_, index: number) => (index === position ? 1 : 0));
+  const canVector = [...new Array(size)].map((_, index: number) =>
+    index === position ? 1 : 0,
+  );
 
   return canVector;
 };

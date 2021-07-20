@@ -1,4 +1,4 @@
-const norm = (col: Array<number>): number =>
+const norm = (col: number[]): number =>
   Math.sqrt(
     col
       .map((curr: number) => curr * curr)

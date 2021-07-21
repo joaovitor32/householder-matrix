@@ -31,7 +31,8 @@ class Householder implements IHouseholderRepository {
     // Multiplication between v matrix -> v*v^t
 
     // This multiplication is not working - verify
-    //https://www.tutorialspoint.com/multiplying-two-matrices-in-javascript-with-different-dimensions
+    // https://www.tutorialspoint.com/multiplying-two-matrices-in-javascript-with-different-dimensions
+
     const vv = multiply([v], transpose([v]));
 
     const h_matrix = identity.map((elem: number[], columnIndex) =>

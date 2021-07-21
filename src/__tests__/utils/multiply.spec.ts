@@ -37,8 +37,8 @@ describe('multiply in matrix', () => {
     expect(
       multiply(
         [
-          [1, 2],
-          [3, 4],
+          [1, 3],
+          [2, 4],
         ],
         [
           [1, 1],

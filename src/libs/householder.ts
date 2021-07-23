@@ -10,6 +10,12 @@ import unitVector from '@utils/unitVector';
 // https://www.cs.cornell.edu/~bindel/class/cs6210-f12/notes/lec16.pdf
 // https://stackoverflow.com/questions/509211/understanding-slice-notation
 // https://rosettacode.org/wiki/QR_decomposition#Python
+// https://www.tutorialspoint.com/multiplying-two-matrices-in-javascript-with-different-dimensions
+
+interface IResponse {
+  Q: number[][];
+  A: number[][];
+}
 
 class Householder implements IHouseholderRepository {
   public householder_matrix(index: number, x: number[]): number[][] {
@@ -28,11 +34,6 @@ class Householder implements IHouseholderRepository {
     const v = unitVector(u, u);
     v[0] = 1;
 
-    // Multiplication between v matrix -> v*v^t
-
-    // This multiplication is not working - verify
-    // https://www.tutorialspoint.com/multiplying-two-matrices-in-javascript-with-different-dimensions
-
     const vv = multiply([v], transpose([v]));
 
     const h_matrix = identity.map((elem: number[], columnIndex) =>
@@ -45,9 +46,29 @@ class Householder implements IHouseholderRepository {
     return h_matrix;
   }
 
-  // QR decomposition public householder_matrix(x: number[]): number[] {}
+  // QR decomposition
+  public qr(matrix: number[][]): IResponse {
+    const m = matrix.length;
+    const n = matrix[0].length;
+
+    const Q = eye(m);
+
+    Array.from({ length: n - Number(m === n) }, (_, index) => {
+      const H = eye(m);
+
+      const h_matrix = this.householder_matrix(index, matrix[index]);
+    });
+
+    return { Q, A: matrix };
+  }
 }
 
-console.log(new Householder().householder_matrix(1, [1, 2]));
+console.log(
+  new Householder().qr([
+    [12, 6, -4],
+    [-51, 167, 24],
+    [4, -68, -41],
+  ]),
+);
 
 export default Householder;

@@ -14,7 +14,7 @@ import unitVector from '@utils/unitVector';
 
 interface IResponse {
   Q: number[][];
-  A: number[][];
+  R: number[][];
 }
 
 class Householder implements IHouseholderRepository {
@@ -25,25 +25,27 @@ class Householder implements IHouseholderRepository {
      * @param normX - Norm of a vector
      *
      */
+    const x0 = x[0];
+    if (index !== 0) {
+      x[0] = 0;
+    }
 
     const m = x.length;
     const identity = eye(m);
-
     const direction = matrixByScalar(norm(x), canonicalVector(index, m));
-    const u = x.map((elem: number, index: number) => elem - direction[index]);
+    const u = x.map((elem: number, uindex: number) => elem - direction[uindex]);
     const v = unitVector(u, u);
-    v[0] = 1;
 
     const vv = multiply([v], transpose([v]));
 
-    const h_matrix = identity.map((elem: number[], columnIndex) =>
+    x[0] = x0;
+
+    return identity.map((elem: number[], columnIndex) =>
       elem.map(
         (rowElem: number, rowIndex: number) =>
           rowElem - 2 * vv[columnIndex][rowIndex],
       ),
     );
-
-    return h_matrix;
   }
 
   // QR decomposition
@@ -51,24 +53,39 @@ class Householder implements IHouseholderRepository {
     const m = matrix.length;
     const n = matrix[0].length;
 
-    const Q = eye(m);
+    let Q = eye(m);
 
-    Array.from({ length: n - Number(m === n) }, (_, index) => {
-      const H = eye(m);
+    matrix = transpose(matrix);
 
-      const h_matrix = this.householder_matrix(index, matrix[index]);
+    Array.from({ length: n - Number(m === n) }).forEach((_, index) => {
+      const householder_matrix = this.householder_matrix(index, matrix[index]);
+
+      const R = multiply(householder_matrix, matrix);
+      Q = householder_matrix;
+
+      console.log('Q', Q);
+      console.log('R', R);
+
+      matrix = R;
     });
 
-    return { Q, A: matrix };
+    console.log('Final result - R', matrix);
+    console.log('Final result - Q', Q);
+
+    return { Q, R: matrix };
   }
 }
 
-console.log(
-  new Householder().qr([
-    [12, 6, -4],
-    [-51, 167, 24],
-    [4, -68, -41],
-  ]),
-);
+/* new Householder().qr([
+  [12, 6, -4],
+  [-51, 167, 24],
+  [4, -68, -41],
+]); */
+
+new Householder().qr([
+  [-1, -1, 1],
+  [1, 3, 3],
+  [-1, -1, 5],
+]);
 
 export default Householder;

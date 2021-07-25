@@ -54,23 +54,24 @@ class Householder implements IHouseholderRepository {
     const n = matrix[0].length;
 
     let Q = eye(m);
+    let R = matrix;
 
     matrix = transpose(matrix);
 
     Array.from({ length: n - Number(m === n) }).forEach((_, index) => {
       const householder_matrix = this.householder_matrix(index, matrix[index]);
 
-      const R = multiply(householder_matrix, matrix);
-      Q = householder_matrix;
-
-      console.log('Q', Q);
-      console.log('R', R);
-
+      Q = index === 0 ? householder_matrix : multiply(Q, householder_matrix);
+      R = multiply(householder_matrix, matrix);
       matrix = R;
     });
 
-    console.log('Final result - R', matrix);
-    console.log('Final result - Q', Q);
+    console.log(
+      'Q R QR',
+      transpose(Q),
+      transpose(matrix),
+      transpose(multiply(Q, matrix)),
+    );
 
     return { Q, R: matrix };
   }

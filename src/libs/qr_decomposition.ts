@@ -6,7 +6,7 @@ import norm from '@utils/norm';
 import transpose from '@utils/transpose';
 import unitVector from '@utils/unitVector';
 
-interface IResponse {
+export interface IResponse {
   Q: number[][];
   R: number[][];
 }

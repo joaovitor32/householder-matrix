@@ -1,8 +1,30 @@
 <div>
 
+## Description
+
 <p>
 Qualquer matriz retangular A do tipo M x N pode ser decomposta em um produto de uma matriz ortogonal Q e uma matriz triangular superior (direita) R, conforme descrito na decomposição QR, em outras palavras é uma transformação linear que descreve uma reflexão em relação a um plano ou hiperplano que contém a origem.
 </p>
+
+## How to use
+
+```bash
+# Clone this repository
+$ https://github.com/joaovitor32/householder-matrix
+
+# Go into the repository
+$ cd householder-matrix
+
+# Install dependencies
+$ npm install
+
+# Run tests
+
+$ npm run test
+
+# Run server
+$ npm run dev:server
+```
 
 <p>Based on https://github.com/rfabbri/aln-book lectures</p>
 

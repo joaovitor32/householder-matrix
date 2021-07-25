@@ -42,6 +42,7 @@ const householder_matrix = (index: number, x: number[]): number[][] => {
 };
 
 // QR decomposition
+// A aplicação do transpose é só para facilitar a codificação
 const qr_decomposition = (matrix: number[][]): IResponse => {
   const m = matrix.length;
   const n = matrix[0].length;

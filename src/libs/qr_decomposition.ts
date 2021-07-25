@@ -13,11 +13,11 @@ export interface IResponse {
 
 const householder_matrix = (index: number, x: number[]): number[][] => {
   /**
-   * @param Q - Ortogonal matrix
-   * @param R - Transformed matrix
-   * @param normX - Norm of a vector
+   * @identity -
+   *
    *
    */
+
   const x0 = x[0];
   if (index !== 0) {
     x[0] = 0;
@@ -44,6 +44,12 @@ const householder_matrix = (index: number, x: number[]): number[][] => {
 // QR decomposition
 // A aplicação do transpose é só para facilitar a codificação
 const qr_decomposition = (matrix: number[][]): IResponse => {
+  /**
+   * @param Q - Ortogonal matrix
+   * @param R - Transformed matrix
+   * @h_matrix - Householder matrix
+   */
+
   const m = matrix.length;
   const n = matrix[0].length;
 

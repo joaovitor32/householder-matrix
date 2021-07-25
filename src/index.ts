@@ -1,3 +1,3 @@
-import Householder from '@libs/householder';
+import qr_decomposition from '@libs/qr_decomposition';
 
-export default Householder;
+export default qr_decomposition;

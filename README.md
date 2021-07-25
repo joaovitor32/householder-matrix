@@ -19,7 +19,6 @@ $ cd householder-matrix
 $ npm install
 
 # Run tests
-
 $ npm run test
 
 # Run server

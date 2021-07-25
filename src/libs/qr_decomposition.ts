@@ -59,7 +59,7 @@ const qr_decomposition = (matrix: number[][]): IResponse => {
     matrix = R;
   });
 
-  return { Q, R: matrix };
+  return { Q: transpose(Q), R: transpose(matrix) };
 };
 
 export default qr_decomposition;

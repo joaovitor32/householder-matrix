@@ -1,3 +1,3 @@
-import qr_decomposition from '@libs/qr_decomposition';
+import qr_decomposition from '@core/qr_decomposition';
 
 export default qr_decomposition;

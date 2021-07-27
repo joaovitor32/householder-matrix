@@ -16,7 +16,7 @@ module.exports = {
       {
         alias: {
           '@utils': '../src/utils',
-          '@libs': '../src/libs',
+          '@core': '../src/core',
           '@repositories': '../src/repositories',
         },
       },

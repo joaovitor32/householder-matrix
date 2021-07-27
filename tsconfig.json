@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2017",                          
+    "target": "esnext",                          
     "module": "commonjs",                     
     "lib": ["es6"],                             
     "allowJs": true,                       
@@ -20,7 +20,7 @@
     "baseUrl": "./src",
     "paths": {
       "@utils/*": ["utils/*"],
-      "@libs/*": ["libs/*"],
+      "@core/*": ["core/*"],
       "@repositories/*": ["repositories/*"]
     }          
   },

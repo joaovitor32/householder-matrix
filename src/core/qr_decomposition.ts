@@ -13,9 +13,9 @@ export interface IResponse {
 
 const householder_matrix = (index: number, x: number[]): number[][] => {
   /**
-   * @identity -
-   *
-   *
+   * @identity - Identity matrix with M columns and M rows
+   * @x - some column of initial given matrix
+   * @u - normal  vetor
    */
 
   const x0 = x[0];
@@ -33,6 +33,7 @@ const householder_matrix = (index: number, x: number[]): number[][] => {
 
   x[0] = x0;
 
+  // H = I -2vv^t
   return identity.map((elem: number[], columnIndex) =>
     elem.map(
       (rowElem: number, rowIndex: number) =>
@@ -48,7 +49,7 @@ const qr_decomposition = (matrix: number[][]): IResponse => {
    * @param Q - Ortogonal matrix
    * @param R - Transformed matrix
    * @h_matrix - Householder matrix
-   */
+   * */
 
   const m = matrix.length;
   const n = matrix[0].length;

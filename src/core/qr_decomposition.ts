@@ -18,20 +18,20 @@ const householder_matrix = (index: number, x: number[]): number[][] => {
    * @u - normal  vetor
    */
 
-  const x0 = x[0];
+  const xCopy = [...x];
   if (index !== 0) {
-    x[0] = 0;
+    xCopy[0] = 0;
   }
 
-  const m = x.length;
+  const m = xCopy.length;
   const identity = eye(m);
-  const direction = matrixByScalar(norm(x), canonicalVector(index, m));
-  const u = x.map((elem: number, uindex: number) => elem - direction[uindex]);
+  const direction = matrixByScalar(norm(xCopy), canonicalVector(index, m));
+  const u = xCopy.map(
+    (elem: number, uindex: number) => elem - direction[uindex],
+  );
   const v = unitVector(u, u);
 
   const vv = multiply([v], transpose([v]));
-
-  x[0] = x0;
 
   // H = I -2vv^t
   return identity.map((elem: number[], columnIndex) =>

@@ -3,7 +3,7 @@
 ## Description
 
 <p>
-Qualquer matriz retangular A do tipo M x N pode ser decomposta em um produto de uma matriz ortogonal Q e uma matriz triangular superior (direita) R, conforme descrito na decomposição QR, em outras palavras é uma transformação linear que descreve uma reflexão em relação a um plano ou hiperplano que contém a origem.
+Any rectangular matrix A of type M x N can be decomposed into a product of an orthogonal matrix Q and an upper (right) triangular matrix R, as described in the QR decomposition, in other words it is a linear transformation that describes a reflection with respect to a plane or hyperplane that contains the origin.
 </p>
   
 ## Install

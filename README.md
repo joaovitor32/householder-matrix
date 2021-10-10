@@ -46,7 +46,7 @@ $ npm run test
 $ npm run dev:server
 ```
 
-<p>Based on https://github.com/rfabbri/aln-book lectures</p>
+<p>Based mainly on https://github.com/rfabbri/aln-book lectures</p>
 
 <p>References:</p>
 

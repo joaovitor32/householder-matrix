@@ -1,4 +1,4 @@
-import transpose from '@utils/transpose';
+import transpose from '../../src/utils/transpose';
 
 describe('transpose matrix', () => {
   it('2D size - test', () => {

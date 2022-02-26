@@ -1,34 +1,39 @@
 {
   "compilerOptions": {
-    "target": "esnext",                          
-    "module": "commonjs",                     
-    "lib": ["es6"],                             
+    "target": "es5", 
+    "lib": [
+      "es2015",
+      "es2016",
+      "es2017",
+      "es2021.intl"
+    ],                                        
     "allowJs": true,                       
-    "outDir": "dist",                        
-    "rootDir": "./src",                       
-    "removeComments": true,                
-    "typeRoots": [
-      "./node_modules/@types",
-      "./src/@types"
-    ],                          
+    "outDir": "dist",                                   
+    "removeComments": true,                       
+    "noImplicitAny": false,               
     "esModuleInterop": true,                  
     "resolveJsonModule": true,
     "experimentalDecorators": true,        
     "emitDecoratorMetadata": true,         
     "skipLibCheck": true,                     
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": "./src",
+    "strict": true, 
+    "declaration": true,
+    "declarationDir": "types",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "emitDeclarationOnly": true,
+
+    "baseUrl": "./",
     "plugins": [
       {"transform": "typescript-transform-paths"}
-    ], 
-    "paths": {
-      "@utils/*": ["utils/*"],
-      "@core/*": ["core/*"],
-      "@repositories/*": ["repositories/*"]
-    }          
+    ],
   },
   "include": [
-    "src/**/*"
+    "src/**/*.ts",
+    "src/*", 
+    "index.ts" 
   ],
   "exclude": [
     "node_modules",

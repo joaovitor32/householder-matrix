@@ -1,4 +1,4 @@
-import norm from '@utils/norm';
+import norm from './norm';
 
 const unitVector = (
   array: Array<number>,

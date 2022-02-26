@@ -1,4 +1,4 @@
-import canonicalVector from '@utils/canonicalVector';
+import canonicalVector from '../../src/utils/canonicalVector';
 
 describe('Canonical array', () => {
   it('2D size test', () => {

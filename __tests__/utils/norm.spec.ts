@@ -1,4 +1,4 @@
-import norm from '@utils/norm';
+import norm from '../../src/utils/norm';
 
 describe('norm of an array', () => {
   it('2D size - test', () => {

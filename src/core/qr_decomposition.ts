@@ -1,10 +1,10 @@
-import canonicalVector from '@utils/canonicalVector';
-import eye from '@utils/eye';
-import matrixByScalar from '@utils/matrixByScalar';
-import multiply from '@utils/multiply';
-import norm from '@utils/norm';
-import transpose from '@utils/transpose';
-import unitVector from '@utils/unitVector';
+import canonicalVector from '../utils/canonicalVector';
+import eye from '../utils/eye';
+import matrixByScalar from '../utils/matrixByScalar';
+import multiply from '../utils/multiply';
+import norm from '../utils/norm';
+import transpose from '../utils/transpose';
+import unitVector from '../utils/unitVector';
 
 export interface IResponse {
   Q: number[][];

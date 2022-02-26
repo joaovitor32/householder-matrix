@@ -1,4 +1,4 @@
-import dotProduct from '@utils/dotProduct';
+import dotProduct from '../../src/utils/dotProduct';
 
 describe('dot product', () => {
   it('2D size - inner product test', () => {

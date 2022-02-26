@@ -1,4 +1,4 @@
-import unitVector from '@utils/unitVector';
+import unitVector from '../../src/utils/unitVector';
 
 describe('unit vector', () => {
   it('2D size - test', () => {

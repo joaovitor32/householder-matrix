@@ -1,4 +1,4 @@
-import multiply from '@utils/multiply';
+import multiply from '../../src/utils/multiply';
 
 describe('multiply in matrix', () => {
   it('2D size test', () => {

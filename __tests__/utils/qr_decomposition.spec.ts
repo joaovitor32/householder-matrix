@@ -1,4 +1,4 @@
-import qr_decomposition from 'core/qr_decomposition';
+import qr_decomposition from '../../src/core/qr_decomposition';
 
 describe('QR decomposition test', () => {
   it('2D size - test', () => {

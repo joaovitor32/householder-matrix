@@ -1,4 +1,4 @@
-import matrixByScalar from '@utils/matrixByScalar';
+import matrixByScalar from '../../src/utils/matrixByScalar';
 
 describe('Product between matrix and scalar', () => {
   it('2D size - test', () => {

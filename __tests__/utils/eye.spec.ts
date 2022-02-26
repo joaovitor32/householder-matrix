@@ -1,4 +1,4 @@
-import eye from '@utils/eye';
+import eye from '../../src/utils/eye';
 
 describe('eye array', () => {
   it('2D size - eye test', () => {
